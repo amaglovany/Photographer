@@ -6,8 +6,9 @@ Taking photos becomes as simple as
 ```kotlin
 private val photographer by lazy { photographer("com.amaglovany.files") }
 
-override fun onClick(v: View) = launch(Dispatchers.Main) {
-  val file = photographer.choose(Photographer.Source.CAMERA)
+override fun onClick(v: View) = launch(Dispatchers.Main + exceptionHandler) {
+  val file: File? = photographer.choose(Photographer.Source.CAMERA)
+  // do something with file
 }
 
 ```
